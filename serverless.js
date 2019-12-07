@@ -22,6 +22,9 @@ module.exports = class TencentPHPSlim extends Component {
         if (!(await utils.fileExists(path.resolve(inputs.codeUri, 'app.php')))) {
             throw new Error(`app.js not found in ${inputs.codeUri}`);
         }
+        if (!(await utils.fileExists(path.resolve(inputs.codeUri, 'container.php')))) {
+            throw new Error(`container.php not found in ${inputs.codeUri}`);
+        }
 
         inputs.exclude.push('.git/**', '.gitignore', '.serverless', '.DS_Store');
 

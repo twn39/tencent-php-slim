@@ -1,7 +1,9 @@
 <?php
 
-use Zend\Diactoros\ServerRequest;
-use Zend\Diactoros\StreamFactory;
+use Pimple\Container;
+use Slim\Factory\AppFactory;
+use GuzzleHttp\Psr7\ServerRequest;
+use Pimple\Psr11\Container as PsrContainer;
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -12,45 +14,42 @@ class ServerlessRequestCreator {
 
     public $event;
 
-    public $context;
-
-    public function __construct($event, $context)
+    public function __construct($event)
     {
         $this->event = $event;
-        $this->context = $context;
     }
 
     public function createRequestFromEvent(): ServerRequest
     {
-        $bodyString = $this->event->body ?? '';
-        $streamFactory = new StreamFactory();
-        $bodyStream = $streamFactory->createStream($bodyString);
+        $bodyString = $this->event['body'] ?? '';
         return new ServerRequest(
-            [],[],
-            $this->event->path,
-            $this->event->httpMethod,
-            $bodyStream,
-            (array)$this->event->headers,
-            [],
-            (array)$this->event->queryString,
+            $this->event['httpMethod'],
+            $this->event['path'],
+            $this->event['headers'],
             $bodyString
         );
     }
 }
 
 function handler($event, $context) {
+    $event = json_decode(json_encode($event), true);
+    $container = require __DIR__ . '/container.php';
+    if ($container instanceof Container) {
+        $psrContainer = new PsrContainer($container);
+    } else {
+        $psrContainer = $container;
+    }
+    AppFactory::setContainer($psrContainer);
     $app = require __DIR__ . '/app.php';
-    $container = $app->getContainer();
     $container['event'] = $event;
     $container['context'] = $context;
-    $requestCreator = new ServerlessRequestCreator($event, $context);
+    $requestCreator = new ServerlessRequestCreator($event);
     $request = $requestCreator->createRequestFromEvent();
     $response = $app->handle($request);
 
     $headers = $response->getHeaders();
-    if (isset($headers['Content-Type'])) {
-        $headers['Content-Type'] = $headers['Content-Type'][0];
-    } else {
+
+    if (empty($headers['Content-Type'])) {
         $headers['Content-Type'] = 'text/plain';
     }
 
