@@ -28,8 +28,8 @@ module.exports = class TencentPHPSlim extends Component {
 
         inputs.exclude.push('.git/**', '.gitignore', '.serverless', '.DS_Store');
 
-        //const filePath = path.resolve(__dirname, 'lambda.php');
-        //inputs.include.push(filePath);
+        const filePath = path.resolve(__dirname, 'lambda.php');
+        inputs.include.push(filePath);
         inputs.handler = 'lambda.handler';
         inputs.runtime = 'Php7';
 
