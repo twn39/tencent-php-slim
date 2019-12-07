@@ -1,8 +1,8 @@
 {
-  "name": "serverless-slim",
+  "name": "@twn39/tencent-php-slim",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Slim 4.* PHP tencent serverless component.",
+  "main": "serverless.js",
   "dependencies": {
     "@serverless/core": "^1.1.2",
     "@serverless/tencent-apigateway": "^1.9.10",
@@ -13,6 +13,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "twn39 <twn39@163.com>",
+  "license": "ISC",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/twn39/tencent-php-slim.git"
+  },
+  "bugs": {
+    "url": "https://github.com/twn39/tencent-php-slim/issues"
+  },
+  "homepage": "https://github.com/twn39/tencent-php-slim#readme"
 }
