@@ -2,6 +2,15 @@
   "name": "@twn39/tencent-php-slim",
   "version": "1.0.0",
   "description": "Slim 4.* PHP tencent serverless component.",
+  "keywords": [
+    "tencent",
+    "cloud",
+    "function",
+    "serverless",
+    "slim",
+    "php",
+    "slimphp"
+  ],
   "main": "serverless.js",
   "dependencies": {
     "@serverless/core": "^1.1.2",
