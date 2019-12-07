@@ -1,0 +1,8 @@
+/.serverless
+/.idea
+/node_modules
+/vendor
+.env_temp
+composer.lock
+package-lock.json
+app.php

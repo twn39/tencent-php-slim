@@ -1,0 +1,10 @@
+{
+    "require": {
+        "slim/slim": "^4.3",
+        "zendframework/zend-diactoros": "^2.2",
+        "slim/http": "^0.8.0",
+        "slim/psr7": "^0.6.0",
+      "ext-json": "*",
+        "guzzlehttp/psr7": "^1.6"
+    }
+}
