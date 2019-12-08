@@ -19,7 +19,7 @@ composer install pimple/pimple
 composer install slim/psr7
 ```
 
-Make sure the `package.json` file contains follow section:
+Make sure the `composer.json` file contains follow section:
 
 ```json
   "require": {
@@ -42,7 +42,7 @@ app.php:
 <?php
 
 use Slim\Http\Response;
-use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Psr7\Request;   // notice this request namespace
 use Slim\Factory\AppFactory;
 
 $app = AppFactory::create();
