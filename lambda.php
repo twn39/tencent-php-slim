@@ -51,6 +51,8 @@ function handler($event, $context) {
 
     if (empty($headers['Content-Type'])) {
         $headers['Content-Type'] = 'text/plain';
+    } else {
+        $headers['Content-Type'] = $headers['Content-Type'][0];
     }
 
     $body = $response->getBody()->getContents();
