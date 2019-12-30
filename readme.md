@@ -1,4 +1,4 @@
-[![Serverless Components](https://s3.amazonaws.com/assets.github.serverless/readme-serverless-components-3.gif)](http://serverless.com)
+[![Serverless Components](doc/slimphp.png)](http://serverless.com)
 
 
 Slim 4.* PHP tencent serverless component.
