@@ -1,6 +1,6 @@
 {
   "name": "@twn39/tencent-php-slim",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Slim 4.* PHP tencent serverless component.",
   "keywords": [
     "tencent",
@@ -14,8 +14,8 @@
   "main": "serverless.js",
   "dependencies": {
     "@serverless/core": "^1.1.2",
-    "@serverless/tencent-apigateway": "^1.9.10",
-    "@serverless/tencent-scf": "^2.0.2",
+    "@serverless/tencent-apigateway": "^2.0.4",
+    "@serverless/tencent-scf": "^2.0.9",
     "ext": "^1.4.0",
     "type": "^2.0.0"
   },
