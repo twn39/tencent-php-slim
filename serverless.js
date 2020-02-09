@@ -43,7 +43,7 @@ module.exports = class TencentPHPSlim extends Component {
             if (inputs.functionConf.vpcConfig) inputs.vpcConfig = inputs.functionConf.vpcConfig;
         }
 
-        inputs.fromClientRemark = inputs.fromClientRemark || 'tencent-php-slim'
+        inputs.fromClientRemark = inputs.fromClientRemark || 'tencent-php-slim';
         const tencentCloudFunctionOutputs = await tencentCloudFunction(inputs);
         const apigwParam = {
             serviceName: inputs.serviceName,
@@ -68,20 +68,20 @@ module.exports = class TencentPHPSlim extends Component {
 
         this.state.functionName = inputs.name;
         await this.save();
-        apigwParam.fromClientRemark = inputs.fromClientRemark || 'tencent-php-slim'
+        apigwParam.fromClientRemark = inputs.fromClientRemark || 'tencent-php-slim';
         const tencentApiGatewayOutputs = await tencentApiGateway(apigwParam);
         return {
-            region: inputs.region,
+            region: tencentApiGatewayOutputs.region,
             functionName: inputs.name,
             apiGatewayServiceId: tencentApiGatewayOutputs.serviceId,
-            url: `${tencentApiGatewayOutputs.protocol}://${tencentApiGatewayOutputs.subDomain}/${tencentApiGatewayOutputs.environment}/`,
+            url: `${tencentApiGatewayOutputs.protocols[0]}://${tencentApiGatewayOutputs.subDomain}/${tencentApiGatewayOutputs.environment}/`,
         };
     }
 
     async remove(inputs = {}) {
         const removeInput = {
             fromClientRemark: inputs.fromClientRemark || 'tencent-php-slim'
-        }
+        };
         const tencentApiGateway = await this.load('@serverless/tencent-apigateway');
         const tencentCloudFunction = await this.load('@serverless/tencent-scf');
 
