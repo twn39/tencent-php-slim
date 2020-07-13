@@ -12,11 +12,11 @@ npm i -g serverless
 ## Install Slimphp & components
 
 ```
-composer install slim/slim
-composer install slim/http
-composer install guzzlehttp/psr7
-composer install pimple/pimple
-composer install slim/psr7
+composer require slim/slim
+composer require slim/http
+composer require guzzlehttp/psr7
+composer require pimple/pimple
+composer require slim/psr7
 ```
 
 Make sure the `composer.json` file contains follow section:
