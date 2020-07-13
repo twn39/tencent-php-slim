@@ -1,6 +1,9 @@
 [![Serverless Components](doc/slimphp.png)](http://serverless.com)
 
 
+
+> Not recommend, use the template: https://github.com/twn39/sls-slim-php
+
 Slim 4.* PHP tencent serverless component.
 
 ## Install serverless framework
