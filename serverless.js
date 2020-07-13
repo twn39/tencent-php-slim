@@ -20,7 +20,7 @@ module.exports = class TencentPHPSlim extends Component {
         const apigatewayConf = ensurePlainObject(inputs.apigatewayConf, { default: {} });
 
         if (!(await utils.fileExists(path.resolve(inputs.codeUri, 'app.php')))) {
-            throw new Error(`app.js not found in ${inputs.codeUri}`);
+            throw new Error(`app.php not found in ${inputs.codeUri}`);
         }
         if (!(await utils.fileExists(path.resolve(inputs.codeUri, 'container.php')))) {
             throw new Error(`container.php not found in ${inputs.codeUri}`);
